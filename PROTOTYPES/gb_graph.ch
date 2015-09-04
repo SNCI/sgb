@@ -66,6 +66,12 @@ void make_compound_id(@t\1\1@> /* |sprintf(g->id,"%s%s%s",s1,gg->id,s2)| */
   char *s2@t\2\2@>) /* string for the end of the new |id| */
 @z
 
+@x
+  if (strlen(tmp)<avail) sprintf(g->id,"%s%s%s",s1,tmp,s2);
+@y
+  if ((long)strlen(tmp)<avail) sprintf(g->id,"%s%s%s",s1,tmp,s2);
+@z
+
 @x l.498
 void make_double_compound_id(g,s1,gg,s2,ggg,s3)
               /* |sprintf(g->id,"%s%s%s%s%s",s1,gg->id,s2,ggg->id,s3)| */
@@ -84,6 +90,12 @@ void make_double_compound_id(@t\1\1@>
   char *s2, /* string for the middle of the new |id| */
   Graph *ggg, /* second graph whose |id| is to be copied */
   char *s3@t\2\2@>) /* string for the end of the new |id| */
+@z
+
+@x
+  if (strlen(gg->id)+strlen(ggg->id)<avail)
+@y
+  if ((long)(strlen(gg->id)+strlen(ggg->id))<avail)
 @z
 
 @x l.549
