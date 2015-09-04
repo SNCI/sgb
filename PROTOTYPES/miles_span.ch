@@ -55,6 +55,13 @@ void init_heap(d) /* makes the heap empty */
 void init_heap(long d) /* makes the heap empty */
 @z
 
+@x
+  gv=g->vertices;
+@y
+  (void) d;
+  gv=g->vertices;
+@z
+
 @x l.624
 void enq_heap(v,d)
   Vertex *v; /* vertex that is entering the queue */
@@ -81,11 +88,19 @@ Vertex *del_heap()
 Vertex *del_heap(void)
 @z
 
+@x
+  register unsigned long j; /* child of that hole */
+@y
+  register long j; /* child of that hole */
+@z
+
 @x l.797
 void init_F_heap(d)
   long d;
+{@+F_heap=NULL;@+}
 @y
 void init_F_heap(long d)
+{@+(void)d;F_heap=NULL;@+}
 @z
 
 @x l.860
