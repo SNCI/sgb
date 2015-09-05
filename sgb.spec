@@ -31,7 +31,7 @@ master files stay intact.
 
 %build
 ln -s PROTOTYPES/*.ch .
-sed -e "s/#SYS/SYS/" -e "s/= -g/= -g -W -Wall/" -i Makefile
+sed -e "s/#SYS/SYS/" -e "s/= -g/= -g -Wall -Wextra/" -i Makefile
 make tests assign_lisa book_components econ_order football girth ladders \
 	miles_span multiply queen roget_components take_risc word_components
 pdftex abstract.plaintex

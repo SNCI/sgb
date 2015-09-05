@@ -51,15 +51,11 @@ unsigned long jar_pr(Graph *g)
 @x l.610
 void init_heap(d) /* makes the heap empty */
   long d;
+{
 @y
 void init_heap(long d) /* makes the heap empty */
-@z
-
-@x
-  gv=g->vertices;
-@y
+{
   (void) d;
-  gv=g->vertices;
 @z
 
 @x l.624
