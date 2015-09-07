@@ -58,21 +58,22 @@ Graph *bi_book(char *title,unsigned long n,unsigned long x,@|
 @z
 
 @x
-      if (k>=first_chapter && k<=last_chapter) p->in++;
+register long j,k; /* all-purpose indices */
 @y
-      if (k>=(long)first_chapter && k<=(long)last_chapter) p->in++;
+register long j; /* all-purpose indices */
+register unsigned long k; /* all-purpose indices */
 @z
 
 @x
-    if (k>=first_chapter && k<=last_chapter) {@+register Vertex *u=chap_base+k;
+    if (p->chap!=k) {
 @y
-    if (k>=(long)first_chapter && k<=(long)last_chapter) {@+register Vertex *u=chap_base+k;
+    if (p->chap!=(long)k) {
 @z
 
 @x
-  if (k>=first_chapter && k<=last_chapter) {@+register long c=gb_char();
+        if (p->chap!=k) {@+register Vertex *v=p->vert;
 @y
-  if (k>=(long)first_chapter && k<=(long)last_chapter) {@+register long c=gb_char();
+        if (p->chap!=(long)k) {@+register Vertex *v=p->vert;
 @z
 
 @x

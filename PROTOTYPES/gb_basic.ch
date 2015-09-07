@@ -158,9 +158,9 @@ Graph *perms(@t\1\1@>
 @z
 
 @x
-  if (max_inv==0 || max_inv>ss) max_inv=ss;  
+{@+register long ss; /* max inversions known to be possible */
 @y
-  if (max_inv==0 || (long)max_inv>ss) max_inv=ss;  
+{@+register unsigned long ss; /* max inversions known to be possible */
 @z
 
 @x
