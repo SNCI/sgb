@@ -26,10 +26,7 @@ master files stay intact.
 
 %prep
 %setup -c -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
+%patch -P0 -P1 -P2 -P3 -p1
 
 %build
 ln -s PROTOTYPES/*.ch .
