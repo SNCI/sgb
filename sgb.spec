@@ -30,7 +30,7 @@ changed! A ``change file'' mechanism allows local customization while the
 master files stay intact.
 
 %prep
-%autosetup -c
+%autosetup -c -p1
 
 %build
 %{__ln_s} PROTOTYPES/*.ch .
