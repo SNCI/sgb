@@ -3,22 +3,23 @@
 
 Name: sgb
 Version: 20090810
-Release: 17
+Release: 18
 Packager: Andreas Scherer <andreas@komputer.de>
 Summary: The Stanford GraphBase
 License: Copyright 1993 Stanford University
 URL: http://www-cs-faculty.stanford.edu/~uno/sgb.html
 
 Group: Productivity/Development
-Distribution: Kubuntu 12.04 (i386)
+Distribution: Kubuntu 16.04 (x86_64)
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
-BuildArch: i386
+BuildArch: amd64
 
 Source: ftp://ftp.cs.stanford.edu/pub/sgb/%{name}.tar.gz
 Patch0: 0001-GCC-complains-about-int-long-conflicts.patch
 Patch1: 0002-GCC-Wformat-security.patch
 Patch2: 0004-GCC-Wall.patch
 Patch3: 0006-GCC-Wall-Wextra.patch
+patch4: 0017-Alternative-fix-for-GCC-5.3.1.patch
 
 %description
 The Stanford GraphBase: A Platform for Combinatorial Computing.
@@ -87,6 +88,9 @@ master files stay intact.
 %postun
 
 %changelog
+* Tue May 24 2016 Andreas Scherer <andreas_tex@freenet.de> 20090810-18
+- Fix compiler warning and build on new architecture.
+
 * Thu Nov 26 2015 Andreas Scherer <andreas_tex@freenet.de> 20090810-17
 - Conditional Build Stuff.
 
