@@ -13,6 +13,9 @@ Group: Productivity/Development
 Distribution: Kubuntu 16.04 (x86_64)
 BuildRoot: %{_tmppath}/%{name}-%{version}-root
 BuildArch: amd64
+%if %{with tex}
+BuildRequires: texlive
+%endif
 
 Source: ftp://ftp.cs.stanford.edu/pub/sgb/%{name}.tar.gz
 Patch0: 0001-GCC-complains-about-int-long-conflicts.patch
