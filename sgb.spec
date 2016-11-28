@@ -22,7 +22,8 @@ Patch0: 0001-GCC-complains-about-int-long-conflicts.patch
 Patch1: 0002-GCC-Wformat-security.patch
 Patch2: 0004-GCC-Wall.patch
 Patch3: 0006-GCC-Wall-Wextra.patch
-patch4: 0017-Alternative-fix-for-GCC-5.3.1.patch
+Patch4: 0017-Alternative-fix-for-GCC-5.3.1.patch
+Patch5: 0020-Fix-typographic-glitch.patch
 
 %description
 The Stanford GraphBase: A Platform for Combinatorial Computing.
