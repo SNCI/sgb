@@ -1,7 +1,7 @@
 From f6b6b648a7898363f79a69ae0ea99b4a594c3e7c Mon Sep 17 00:00:00 2001
 From: Andreas Scherer <andreas_github@freenet.de>
 Date: Sun, 27 Nov 2016 16:17:57 +0100
-Subject: [PATCH 20/20] Fix typographic glitch.
+Subject: [PATCH 20/24] Fix typographic glitch.
 
 The initialization material should be properly indented.
 ---
