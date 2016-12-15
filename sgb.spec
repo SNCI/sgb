@@ -1,5 +1,6 @@
 %bcond_without tex
 %bcond_without sysv
+%bcond_without patches
 
 Name: sgb
 %if %{_vendor} == "debbuild"
@@ -22,6 +23,7 @@ BuildRequires: texlive
 %endif
 
 Source: ftp://ftp.cs.stanford.edu/pub/sgb/%{name}.tar.gz
+%if %{with patches}
 Patch0: 0001-GCC-complains-about-int-long-conflicts.patch
 Patch1: 0002-GCC-Wformat-security.patch
 Patch2: 0004-GCC-Wall.patch
@@ -29,6 +31,7 @@ Patch3: 0006-GCC-Wall-Wextra.patch
 Patch4: 0017-Alternative-fix-for-GCC-5.3.1.patch
 Patch5: 0020-Fix-typographic-glitch.patch
 Patch6: 0024-Build-SGB-library-as-shared-object.patch
+%endif
 
 %description
 The Stanford GraphBase: A Platform for Combinatorial Computing.
@@ -40,12 +43,16 @@ changed! A ``change file'' mechanism allows local customization while the
 master files stay intact.
 
 %prep
-%autosetup -c -p1
+%autosetup -c %{?with_patches:-p1}%{!?with_patches:-N}
 
 %build
 %{__ln_s} PROTOTYPES/*.ch .
 %{?with_sysv:%{__sed} -e "s/#SYS/SYS/" -i Makefile}
+%if %{with patches}
 %{__sed} -e "s/= -g/= -g -Wall -Wextra/" -i Makefile
+%else
+%{__echo} 'demos: lib $(DEMOS)' >> Makefile
+%endif
 %{__make} tests demos
 %{?with_tex:%{__pdftex} abstract.plaintex}
 
@@ -60,7 +67,11 @@ master files stay intact.
 %{__mkdir_p} %{buildroot}%{_includedir}/%{name}
 %{__cp} *.h %{buildroot}%{_includedir}/%{name}
 %{__mkdir_p} %{buildroot}%{_libdir}/%{name}
+%if %{with patches}
 %{__cp} libgb.so %{buildroot}%{_libdir}/%{name}
+%else
+%{__cp} libgb.a %{buildroot}%{_libdir}/%{name}
+%endif
 %{__mkdir_p} %{buildroot}%{_libdir}/cweb
 %{__cp} boilerplate.w gb_types.w %{buildroot}%{_libdir}/cweb
 %if %{with tex}
@@ -86,16 +97,20 @@ master files stay intact.
 %{_bindir}/word_components
 %{_datadir}/%{name}
 %{_includedir}/%{name}
+%if %{with patches}
 %{_libdir}/%{name}/libgb.so
+%else
+%{_libdir}/%{name}/libgb.a
+%endif
 %{_libdir}/cweb/boilerplate.w
 %{_libdir}/cweb/gb_types.w
 %{?with_tex:%doc %{_docdir}/%{name}}
 
 %post
-%{__ldconfig} %{_libdir}/%{name}
+%{?with_patches:%{__ldconfig} %{_libdir}/%{name}}
 
 %postun
-%{__ldconfig} %{_libdir}/%{name}
+%{?with_patches:%{__ldconfig} %{_libdir}/%{name}}
 
 %changelog
 * Sun Dec 11 2016 Andreas Scherer <andreas_tex@freenet.de> 20090810-19
