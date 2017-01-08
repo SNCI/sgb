@@ -45,8 +45,6 @@ master files stay intact.
 
 %prep
 %autosetup -c %{?with_patches:-p1}%{!?with_patches:-N}
-
-%build
 %{__ln_s} PROTOTYPES/*.ch .
 %{?with_sysv:%{__sed} -e "s/#SYS/SYS/" -i Makefile}
 %if %{with patches}
@@ -58,6 +56,8 @@ master files stay intact.
 %{__sed} -e "s/CFLAGS = -g/CFLAGS = -O/" -i Makefile
 %{__sed} -e "s/LDFLAGS =/LDFLAGS = -s/" -i Makefile
 %endif
+
+%build
 %{__make} tests demos
 %{?with_tex:%{__pdftex} abstract.plaintex}
 
