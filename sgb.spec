@@ -32,6 +32,7 @@ Patch3: 0006-GCC-Wall-Wextra.patch
 Patch4: 0017-Alternative-fix-for-GCC-5.3.1.patch
 Patch5: 0020-Fix-typographic-glitch.patch
 Patch6: 0024-Build-SGB-library-as-shared-object.patch
+Patch7: 0032-Fix-compiler-warnings-when-optimizing.patch
 %endif
 
 %description
@@ -117,6 +118,9 @@ master files stay intact.
 %{?with_patches:%{__ldconfig} %{_libdir}/%{name}}
 
 %changelog
+* Tue Jan 10 2017 Andreas Scherer <andreas_tex@freenet.de> 20090810-19
+- Fix compiler warnings when optimizing
+
 * Sun Dec 11 2016 Andreas Scherer <andreas_tex@freenet.de> 20090810-19
 - Build SGB library as shared object
 
