@@ -49,7 +49,7 @@ changed! A ``change file'' mechanism allows local customization while the
 master files stay intact.
 
 %prep
-%{?with_patches:%autosetup -c -p1}%{!?with_patches:%autosetup -c -N}
+%autosetup -c -p1
 %{__ln_s} PROTOTYPES/*.ch .
 %{?with_sysv:%{__sed} -e "s/#SYS/SYS/" -i Makefile}
 %if %{with patches}
